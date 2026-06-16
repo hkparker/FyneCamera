@@ -37,8 +37,10 @@ func main() {
 		cameraDevice.StartPreview()
 		go func() {
 			for img := range preview {
-				resultImage.Image = img
-				resultImage.Refresh()
+				fyne.Do(func() {
+					resultImage.Image = img
+					resultImage.Refresh()
+				})
 			}
 		}()
 	})
